@@ -69,7 +69,7 @@ button:disabled {
 .chat__sidebar {
   height:100vh;
   color:#fff;
-  background:#333744;
+  background:#172349;
   width:225px;
   overflow-y:scroll
 }
@@ -167,13 +167,6 @@ body {
     height: 100%;
     overflow: hidden; 
   }
-
-.portrait2{
-    /* vertical-align: left; */
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-}
 
 .message-bubble {
 	position: relative;
