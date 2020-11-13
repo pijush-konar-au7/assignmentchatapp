@@ -4,7 +4,6 @@ const express = require('express')
 const socketio = require('socket.io')
 
 const app = express()
-
 // Server Created to pass with Socket.IO, because if 
 // express creates it by default we don't have access to it
 const server = http.createServer(app)
@@ -16,11 +15,15 @@ const publicDirectoryPath = path.join(__dirname, '../public')
 app.use(express.static(publicDirectoryPath))
 
 io.on('connection', (socket) => {
-    console.log('New Client Connected')
+    console.log('New WebSocket connection')
 
     socket.emit('message', 'Welcome!')
+
+    socket.on('sendMessage', (message) => {
+        io.emit('message', message)
+    })
 })
 
 server.listen(port, () => {
-    console.log(`Server is up on port ${port}`)
+    console.log(`Server is up on port ${port}!`)
 })
