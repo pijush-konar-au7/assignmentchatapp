@@ -8,6 +8,7 @@ const app = express()
 // express creates it by default we don't have access to it
 const server = http.createServer(app)
 const io = socketio(server)
+const { generateMessage } = require('./utils/messages')
 
 const port = process.env.PORT || 3000
 const publicDirectoryPath = path.join(__dirname, '../public')
@@ -17,16 +18,16 @@ app.use(express.static(publicDirectoryPath))
 io.on('connection', (socket) => {
     console.log('New WebSocket connection')
 
-    socket.emit('message', 'Welcome!')
-    socket.broadcast.emit('message', 'A new user has joined')
+    socket.emit('message', generateMessage('Welcome'))
+    socket.broadcast.emit('message', generateMessage('A new user has joined'))
 
     socket.on('sendMessage', (message, callback) => {
-        io.emit('message', message)
+        io.emit('message', generateMessage(message))
         callback('Delivered')
     })
 
     socket.on('disconnect', () => {
-        io.emit('message', 'A user has left')
+        io.emit('message', generateMessage('A user has left'))
     })
 })
 
