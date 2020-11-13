@@ -15,8 +15,10 @@ const publicDirectoryPath = path.join(__dirname, '../public')
 
 app.use(express.static(publicDirectoryPath))
 
-io.on('connection', () => {
+io.on('connection', (socket) => {
     console.log('New Client Connected')
+
+    socket.emit('message', 'Welcome!')
 })
 
 server.listen(port, () => {
