@@ -27,7 +27,7 @@ input {
 button {
   cursor:pointer;
   padding:12px;
-  background:#7C5CBF;
+  background: #5cbf7a;
   border:none;
   border-radius: 10rem;
   color:#fff;
@@ -35,10 +35,11 @@ button {
   transition:background .3s ease
 }
 button:hover {
-  background:#6b47b8
+  background: #46995f;
 }
 button:disabled {
-  cursor:default;background:#7c5cbf94
+  cursor: default;
+  background: #3d8d55;
 }
 
 .centered-form {
